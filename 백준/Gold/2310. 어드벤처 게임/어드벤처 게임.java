@@ -41,7 +41,6 @@ public class Main {
 						break;
 					arr[i].add(a);
 				}
-				// System.out.println(arr[i]);
 			}
 
 			visit = new boolean[n + 1];
@@ -59,14 +58,13 @@ public class Main {
 	private static void dfs(ArrayList<Integer> list, char t, int cur_money) {
 		int room_num = list.get(0);
 		int money = list.get(1);
-		int add_money = 0;
 		if (t == 'L') {
 			if (cur_money < money)
-				add_money = money - cur_money;
+				cur_money = money;
 		}
 		if (t == 'T') {
 			if (cur_money >= money)
-				add_money -= money;
+				cur_money -= money;
 			else
 				return;
 		}
@@ -74,12 +72,11 @@ public class Main {
 			check = true;
 			return;
 		}
-		int cnt = 0;
 		for (int i = 2; i < list.size(); i++) {
 			int idx = list.get(i);
 			if (!visit[idx]) {
 				visit[idx] = true;
-				dfs(arr[idx], type[idx], cur_money+add_money);
+				dfs(arr[idx], type[idx], cur_money);
 				visit[idx] = false;
 			}
 		}
