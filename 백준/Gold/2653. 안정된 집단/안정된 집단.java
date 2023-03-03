@@ -40,23 +40,18 @@ public class Main {
 		}
 		int idx = 1;
 		for (int i = 1; i <= n; i++) {
-			if(!check[i]) {
+			if (!check[i]) {
 				arr[idx].add(i);
 			}
 			for (int j = 1; j <= n; j++) {
-
 				if (i != j && map[i][j] == 0) {
 					if (!check[i] && !check[j]) {
 						arr[idx].add(j);
 						check[j] = true;
 					}
-//					if (!check[i] && check[j]) {
-//						System.out.println("0 g");
-//						return;
-//					}
 
 					if (check[i] && !check[j]) {
-						System.out.println("0 gg");
+						System.out.println("0");
 						return;
 					}
 				}
@@ -67,17 +62,17 @@ public class Main {
 				idx++;
 			}
 		}
-		for(int i=1; i<idx; i++) {
-			if(arr[i].size()==1) {
+		for (int i = 1; i < idx; i++) {
+			if (arr[i].size() == 1) {
 				System.out.println("0");
 				return;
 			}
 		}
-		
-		System.out.println(idx-1);
-		for(int i=1; i<idx; i++) {
-			for(int j=0; j<arr[i].size(); j++) {
-				System.out.print(arr[i].get(j)+" ");
+
+		System.out.println(idx - 1);
+		for (int i = 1; i < idx; i++) {
+			for (int j = 0; j < arr[i].size(); j++) {
+				System.out.print(arr[i].get(j) + " ");
 			}
 			System.out.println();
 		}
